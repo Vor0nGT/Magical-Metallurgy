@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "magicalmetallurgy:shinesteel_block"
+    }
+  ],
+  "result": {
+    "item": "magicalmetallurgy:shinesteel_ingot",
+    "count": 9
+  }
+}
