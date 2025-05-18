@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "magicalmetallurgy:shinesteel_ingot"
+    },
+    "@": {
+      "item": "minecraft:leather"
+    },
+    "/": {
+      "item": "minecraft:string"
+    }
+
+  },
+  "pattern": [
+    "/ /",
+    "@ @",
+    "# #"
+  ],
+  "result": {
+    "item": "magicalmetallurgy:traveling_boots"
+  }
+}
