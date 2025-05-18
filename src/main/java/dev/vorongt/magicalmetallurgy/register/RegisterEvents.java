@@ -6,7 +6,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +16,8 @@ import static dev.vorongt.magicalmetallurgy.MagicalMetallurgy.MODID;
 @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RegisterEvents {
     private static int ticks = 1;
+
+    // Fires every tick
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
@@ -24,10 +25,12 @@ public class RegisterEvents {
         if (player.level().isClientSide()) return;
 
 
+        // Fires every second
         if(ticks != 20) {ticks += 1;}
         else {
             ticks = 1;
 
+            // Traveling Boots effects
             if (WearingTravelingBoots(player)) {
                 if (!player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
                     player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 0, true, false, true));
@@ -50,6 +53,7 @@ public class RegisterEvents {
         }
     }
 
+    // Checks if player wearing Traveling Boots
     private static boolean WearingTravelingBoots(Player player) {
         ItemStack feet = player.getItemBySlot(EquipmentSlot.FEET);
 
