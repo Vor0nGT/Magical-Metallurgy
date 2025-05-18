@@ -19,14 +19,13 @@ public class RegisterTabs {
                     .title(Component.translatable("magical_metallurgy_tab"))
                     .displayItems((pParameters, pOutput) -> {
 
-                        // Items
+
                         pOutput.accept(RegisterItems.SHINESTEEL_INGOT.get());
 
-                        // Armor
-                        pOutput.accept(RegisterItems.TRAVELING_BOOTS.get());
-
-                        // Blocks
                         pOutput.accept(RegisterBlocks.SHINESTEEL_BLOCK.get());
+
+
+                        pOutput.accept(RegisterItems.TRAVELING_BOOTS.get());
 
                     })
                     .build());
