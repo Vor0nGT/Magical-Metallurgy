@@ -24,8 +24,8 @@ public class RegisterTabs {
 
                         pOutput.accept(RegisterBlocks.SHINESTEEL_BLOCK.get());
 
-
                         pOutput.accept(RegisterItems.TRAVELING_BOOTS.get());
+                        pOutput.accept(RegisterItems.NIGHTVISION_GLASSES.get());
 
                     })
                     .build());
