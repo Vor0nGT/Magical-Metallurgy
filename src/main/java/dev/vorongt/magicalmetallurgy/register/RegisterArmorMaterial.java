@@ -14,9 +14,9 @@ import static dev.vorongt.magicalmetallurgy.MagicalMetallurgy.MODID;
 
 public class RegisterArmorMaterial {
     public enum ModArmorMaterials implements ArmorMaterial {
-        TRAVELING_BOOTS("traveking_boots", 1, new int[]{2, 5, 6, 2}, 0,
+        SHINESTEEL_ARMOR("shinesteel_armor", 1, new int[]{2, 0, 0, 2}, 0,
                 SoundEvents.ARMOR_EQUIP_IRON, 0.0F, 0.0F, () -> Ingredient.of(Items.IRON_INGOT));
-        private static final int[] BASE_DURABILITY = {1, 1, 1, 320};
+        private static final int[] BASE_DURABILITY = {300, 1, 1, 300};
         private final String name;
         private final int durabilityMultiplier;
         private final int[] protectionAmounts;
