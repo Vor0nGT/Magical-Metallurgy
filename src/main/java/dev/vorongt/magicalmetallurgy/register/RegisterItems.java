@@ -19,7 +19,9 @@ public class RegisterItems {
 
     // Armor
     public static final RegistryObject<Item> TRAVELING_BOOTS = ModItems.register("traveling_boots",
-            () -> new ArmorItem(ModArmorMaterials.TRAVELING_BOOTS, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new ArmorItem(ModArmorMaterials.SHINESTEEL_ARMOR, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> NIGHTVISION_GLASSES = ModItems.register("nightvision_glasses",
+            () -> new ArmorItem(ModArmorMaterials.SHINESTEEL_ARMOR, ArmorItem.Type.HELMET, new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
