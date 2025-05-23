@@ -24,7 +24,6 @@ public class RegisterEvents {
         Player player = event.player;
         if (player.level().isClientSide()) return;
 
-
         // Fires every second
         if(ticks != 20) {ticks += 1;}
         else {
@@ -39,15 +38,55 @@ public class RegisterEvents {
                     player.addEffect(new MobEffectInstance(MobEffects.JUMP, 100, 0, true, false, true));
                 }
 
+                damageItem(player, "feet");
+            }
 
-                ItemStack feet = player.getItemBySlot(EquipmentSlot.FEET);
+            // Nightvision Glasses effects
+            if (WearingNightvisionGlassses(player)) {
+                if (!player.hasEffect(MobEffects.NIGHT_VISION)) {
+                    player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 100, 0, true, false, true));
+                }
 
-                if(!player.getAbilities().instabuild) {
-                    feet.hurt(1, player.getRandom(), player instanceof ServerPlayer ? (ServerPlayer) player : null);
+                damageItem(player, "head");
+            }
+        }
+    }
 
-                    if (feet.getDamageValue() >= feet.getMaxDamage()) {
-                        feet.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(EquipmentSlot.HEAD));
-                    }
+    // Damages item
+    private static void damageItem(Player player, String slot) {
+        if(!player.getAbilities().instabuild) {
+
+            ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
+            ItemStack chest = player.getItemBySlot(EquipmentSlot.CHEST);
+            ItemStack legs = player.getItemBySlot(EquipmentSlot.LEGS);
+            ItemStack feet = player.getItemBySlot(EquipmentSlot.FEET);
+
+            if(slot.equals("head")) {
+                head.hurt(1, player.getRandom(), player instanceof ServerPlayer ? (ServerPlayer) player : null);
+
+                if (head.getDamageValue() >= head.getMaxDamage()) {
+                    head.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(EquipmentSlot.HEAD));
+                }
+            }
+            else if(slot.equals("chest")) {
+                chest.hurt(1, player.getRandom(), player instanceof ServerPlayer ? (ServerPlayer) player : null);
+
+                if (chest.getDamageValue() >= chest.getMaxDamage()) {
+                    chest.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(EquipmentSlot.CHEST));
+                }
+            }
+            else if(slot.equals("legs")) {
+                legs.hurt(1, player.getRandom(), player instanceof ServerPlayer ? (ServerPlayer) player : null);
+
+                if (legs.getDamageValue() >= legs.getMaxDamage()) {
+                    legs.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(EquipmentSlot.LEGS));
+                }
+            }
+            else if(slot.equals("feet")) {
+                feet.hurt(1, player.getRandom(), player instanceof ServerPlayer ? (ServerPlayer) player : null);
+
+                if (feet.getDamageValue() >= feet.getMaxDamage()) {
+                    feet.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(EquipmentSlot.FEET));
                 }
             }
         }
@@ -58,5 +97,12 @@ public class RegisterEvents {
         ItemStack feet = player.getItemBySlot(EquipmentSlot.FEET);
 
         return feet.getItem() == RegisterItems.TRAVELING_BOOTS.get();
+    }
+
+    // Checks if player wearing Nightvision Glasses
+    private static boolean WearingNightvisionGlassses(Player player) {
+        ItemStack head = player.getItemBySlot(EquipmentSlot.HEAD);
+
+        return head.getItem() == RegisterItems.NIGHTVISION_GLASSES.get();
     }
 }
